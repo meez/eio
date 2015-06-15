@@ -1,0 +1,33 @@
+buildscript {
+  repositories {
+    mavenLocal()
+  }
+  dependencies {
+    classpath "petermd:gradle-vertx-plugin:1.0-SNAPSHOT"
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'vertx'
+apply plugin: 'maven'
+
+group="com.meez.vertx"
+version="1.0-SNAPSHOT"
+
+repositories {
+  mavenLocal()
+  maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+  mavenCentral()
+}
+
+dependencies {
+  compile "org.codehaus.jackson:jackson-core-asl:1.9.4"
+  compile "org.codehaus.jackson:jackson-mapper-asl:1.9.4"
+
+  testCompile "org.mockito:mockito-core:1.9.0"
+}
+
+vertx {
+  platformVersion "2.1.1"
+}
