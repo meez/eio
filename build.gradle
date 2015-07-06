@@ -3,7 +3,7 @@ buildscript {
     mavenLocal()
   }
   dependencies {
-    classpath "petermd:vertx-gradle-plugin:1.0-SNAPSHOT"
+    classpath "petermd:vertx-gradle-plugin:1.0"
   }
 }
 
