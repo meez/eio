@@ -129,7 +129,16 @@ public abstract class BaseJsonBuilderObject<T> implements JsonBuilder<T> {
     assert !this.stack.isEmpty() && this.stack.peek().isObject();
     assert JsonObject.class.isInstance(value);
 
-    ((JsonObject)this.stack.peek()).putObject(name,(JsonObject)value);
+    ((JsonObject)this.stack.peek()).putObject(name, (JsonObject) value);
+
+    return this;
+  }
+
+  /** Add array number element */
+  public JsonBuilder<T> element(Integer value) {
+    assert !this.stack.isEmpty() && this.stack.peek().isArray();
+
+    ((JsonArray) this.stack.peek()).addNumber(value);
 
     return this;
   }
@@ -138,7 +147,7 @@ public abstract class BaseJsonBuilderObject<T> implements JsonBuilder<T> {
   public JsonBuilder<T> element(String value) {
     assert !this.stack.isEmpty() && this.stack.peek().isArray();
 
-    ((JsonArray) this.stack.peek()).add(value);
+    ((JsonArray) this.stack.peek()).addString(value);
 
     return this;
   }

@@ -188,6 +188,19 @@ public class JsonBuilderStream implements JsonBuilder<WriteStream> {
     }
   }
 
+  /** Number element */
+  public JsonBuilder element(Integer value) throws JsonException {
+    assert !this.stack.isEmpty() && this.stack.peek() == State.ARRAY;
+
+    try {
+      this.json.writeNumber(value);
+
+      return this;
+    } catch (IOException e) {
+      throw new JsonException("Unable to encode array string element", e);
+    }
+  }
+
   /** String element */
   public JsonBuilder element(String value) throws JsonException {
     assert !this.stack.isEmpty() && this.stack.peek() == State.ARRAY;

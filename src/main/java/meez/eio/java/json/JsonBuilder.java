@@ -42,7 +42,10 @@ public interface JsonBuilder<T> {
   /** Array Object */
   JsonBuilder<T> object() throws JsonException;
 
-  /** Array String */
+  /** Array Integer Element */
+  JsonBuilder<T> element(Integer value) throws JsonException;
+
+  /** Array String Element */
   JsonBuilder<T> element(String value) throws JsonException;
 
   /** Start Array */
